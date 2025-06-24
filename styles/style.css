@@ -192,3 +192,64 @@ a {
 .break-word span {
     display: table;
 }
+
+
+
+/**** || Blocks ****/
+/* Badges */
+.badge {
+    --_clr-badge: var(--clr-accent);
+
+    display: block;
+    color: var(--clr-primary-light-1);
+    background-color: var(--_clr-badge);
+    padding: 0.5em 1em;
+    border-radius: 100vw;
+    text-transform: uppercase;
+    font-size: var(--fs-100);
+    font-weight: var(--fw-bold);
+
+    &[data-variant="robust"] {
+        --_clr-badge: var(--clr-robust);
+    }
+
+    &[data-variant="green"] {
+        --_clr-badge: var(--clr-green);
+    }
+
+    &[data-variant="flower"] {
+        --_clr-badge: var(--clr-flower);
+    }
+
+    &[data-variant="colorful"] {
+        --_clr-badge: var(--clr-colorful);
+    }
+
+    &[data-variant="sunloving"] {
+        --_clr-badge: var(--clr-sunloving);
+    }
+
+    &[data-variant="air"] {
+        --_clr-badge: var(--clr-air);
+    }
+
+    &[data-variant="decorative"] {
+        --_clr-badge: var(--clr-decorative);
+    }
+
+    &[data-variant="edible"] {
+        --_clr-badge: var(--clr-edible);
+    }
+
+    &[data-variant="easy"] {
+        --_clr-badge: var(--clr-easy);
+    }
+
+    &[data-variant="fragrant"] {
+        --_clr-badge: var(--clr-fragrant);
+    }
+
+    &[data-variant="fast"] {
+        --_clr-badge: var(--clr-fast);
+    }
+}
