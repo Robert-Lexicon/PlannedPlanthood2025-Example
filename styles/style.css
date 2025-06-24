@@ -78,4 +78,116 @@
     --spacing-md: 1rem;
     --spacing-sm: .5rem;
     --spacing-xs: .25rem;
+
+    --content-max-width: 900px;
+    --breakout-max-width: 1200px;
+}
+
+
+
+/**** Global/base ****/
+body {
+    font-family: var(--font-base);
+    background-color: var(--clr-accent-light-1);
+    color: var(--clr-primary-dark);
+}
+
+h2,
+h3 {
+    font-weight: var(--fw-bold);
+    line-height: 1;
+}
+
+h2 {
+    font-size: var(--fs-700);
+}
+
+h3 {
+    font-size: var(--fs-600);
+    font-weight: var(--fw-semi-bold);
+}
+
+a {
+    color: var(--clr-accent);
+    text-decoration: none;
+
+    &:hover,
+    &:focus-visible {
+        text-decoration: underline;
+    }
+}
+
+
+/**** || Composition ****/
+
+/* breakout */
+.content-grid {
+    --padding-inline: var(--spacing-md);
+    --breakout-size: calc((var(--breakout-max-width) - var(--content-max-width)) / 2);
+
+    display: grid;
+    grid-template-columns:
+        [full-width-start] minmax(var(--padding-inline), 1fr) [breakout-start] minmax(0, var(--breakout-size)) [content-start] min(100% - (var(--padding-inline) * 2),
+            var(--content-max-width)) [content-end] minmax(0, var(--breakout-size)) [breakout-end] minmax(var(--padding-inline), 1fr) [full-width-end];
+}
+
+.content-grid> :not(.breakout, .full-width),
+.full-width> :not(.breakout, .full-width) {
+    grid-column: content;
+}
+
+.content-grid>.breakout {
+    grid-column: breakout;
+}
+
+.content-grid>.full-width {
+    grid-column: full-width;
+
+    display: grid;
+    grid-template-columns: inherit;
+}
+
+
+/* flow classes for spacing */
+.flow>*+* {
+    margin-block-start: var(--flow-space, 1em);
+}
+
+/* flex flow style for things like badges */
+.cluster {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--cluster-gap, var(--spacing-xs));
+    align-content: var(--cluster-align, flex-start);
+    justify-content: var(--cluster-justify, flex-start);
+}
+
+/* just center whatever content */
+.center-content {
+    text-align: center;
+
+    >* {
+        margin-inline: auto;
+    }
+}
+
+
+/**** || Utilities ****/
+
+.visually-hidden {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.break-word span {
+    display: table;
 }
