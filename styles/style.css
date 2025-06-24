@@ -117,6 +117,13 @@ a {
     }
 }
 
+/* not recommended to do this usually, but in this case all images are restricted by their containers anyway */
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 
 /**** || Composition ****/
 
@@ -154,6 +161,15 @@ a {
     margin-block-start: var(--flow-space, 1em);
 }
 
+/* just center whatever content */
+.center-content {
+    text-align: center;
+
+    >* {
+        margin-inline: auto;
+    }
+}
+
 /* flex flow style for things like badges */
 .cluster {
     display: flex;
@@ -163,13 +179,18 @@ a {
     justify-content: var(--cluster-justify, flex-start);
 }
 
-/* just center whatever content */
-.center-content {
-    text-align: center;
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-    >* {
-        margin-inline: auto;
-    }
+.grid {
+    display: grid;
+}
+
+.gap-md {
+    gap: var(--spacing-md);
 }
 
 
@@ -185,13 +206,16 @@ a {
     width: 1px;
 }
 
-.uppercase {
-    text-transform: uppercase;
-}
 
 .break-word span {
     display: table;
 }
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+
 
 
 
@@ -252,4 +276,64 @@ a {
     &[data-variant="fast"] {
         --_clr-badge: var(--clr-fast);
     }
+}
+
+/* Card */
+.card {
+    display: grid;
+    gap: var(--spacing-md);
+
+    padding: var(--spacing-md);
+    background-color: var(--clr-primary-light-1);
+    box-shadow: var(--border-shadow);
+
+    grid-template-areas: "photo" "tags" "header" "body" "footer";
+
+    >img {
+        grid-area: photo;
+    }
+
+    .watermark {
+        grid-area: photo;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0.3;
+
+        img {
+            height: 50%;
+            width: auto;
+        }
+    }
+
+    .tags {
+        grid-area: tags;
+    }
+
+    footer {
+        display: grid;
+        grid-template-columns: 3rem 1fr;
+        align-items: center;
+        gap: var(--spacing-sm);
+    }
+
+    /* this could be nested in footer, but this way it is easier to override if needed */
+    .meta {
+        .user {
+            color: var(--clr-primary);
+            font-weight: var(--fw-bold);
+        }
+
+        time {
+            display: block;
+        }
+    }
+}
+
+.gallery {
+    grid-template-columns: repeat(2, 1fr);
+    border: 1rem solid var(--clr-primary-light-1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+
 }
