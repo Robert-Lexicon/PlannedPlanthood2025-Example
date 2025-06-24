@@ -121,6 +121,7 @@ a {
 /**** || Composition ****/
 
 /* breakout */
+/* see https://www.youtube.com/watch?v=c13gpBrnGEw */
 .content-grid {
     --padding-inline: var(--spacing-md);
     --breakout-size: calc((var(--breakout-max-width) - var(--content-max-width)) / 2);
