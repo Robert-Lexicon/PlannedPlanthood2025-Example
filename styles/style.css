@@ -553,7 +553,35 @@ input[type="submit"] {
     a {
         color: inherit;
     }
+}
 
 
+@media (prefers-color-scheme: dark) {
+    :root {
+        --clr-accent: var(--clr-green-100);
+        --clr-accent-light-1: var(--clr-green-400);
+
+        --clr-primary-light-1: var(--clr-neutral-900);
+        --clr-primary-light-2: var(--clr-neutral-800);
+        --clr-primary-light-3: var(--clr-neutral-200);
+        --clr-primary: var(--clr-neutral-200);
+        --clr-primary-dark: var(--clr-neutral-100);
+    }
+
+    .page__footer {
+        background-color: var(--clr-primary-light-1);
+        color: var(--clr-accent);
+    }
+
+    [data-variant="inverted"] .logo {
+        svg {
+            stroke: var(--clr-accent);
+        }
+    }
+
+    .badge {
+        --_clr-badge: var(--clr-accent-light-1);
+        color: var(--clr-primary-dark-1);
+    }
 
 }
