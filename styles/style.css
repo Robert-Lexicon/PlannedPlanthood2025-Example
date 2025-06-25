@@ -229,6 +229,9 @@ img {
     width: 1px;
 }
 
+.border-dark {
+    border: var(--_border-size, 1px) solid var(--clr-primary-dark);
+}
 
 .break-word span {
     display: table;
