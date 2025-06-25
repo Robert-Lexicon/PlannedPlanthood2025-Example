@@ -199,17 +199,17 @@ img {
     align-items: center;
 }
 
+/* these might just as well be utility classes but does do layout so I keep them here */
 .flex {
     display: flex;
-    align-items: center;
-}
-
-.justify-between {
-    justify-content: space-between;
 }
 
 .grid {
     display: grid;
+}
+
+.justify-between {
+    justify-content: space-between;
 }
 
 .gap-md {
@@ -427,9 +427,6 @@ input[type="submit"] {
     }
 }
 
-
-
-
 .dot {
     display: flex;
     justify-content: center;
@@ -480,7 +477,7 @@ input[type="submit"] {
     }
 }
 
-.form__newsletter {
+.form-newsletter {
     display: flex;
     border-radius: 100vw;
     border: 1px solid var(--clr-primary);
@@ -525,12 +522,34 @@ input[type="submit"] {
     }
 }
 
+.nav-main ul {
+    display: flex;
+    gap: var(--spacing-md);
+
+    font-weight: var(--fw-medium);
+    text-transform: uppercase;
+
+    li a {
+        display: block;
+        padding-block: var(--spacing-md);
+        padding-inline: var(--spacing-lg);
+
+
+        &:hover,
+        &:focus-visible {
+            text-decoration: none;
+            color: var(--clr-primary-light-1);
+            background-color: var(--clr-accent);
+        }
+    }
+
+}
+
 .page__header {
     background-color: var(--clr-primary-light-1);
 }
 
 .page__footer {
-
     .contact {
         .contact__icon {
             display: inline;
@@ -583,5 +602,14 @@ input[type="submit"] {
         --_clr-badge: var(--clr-accent-light-1);
         color: var(--clr-primary-dark-1);
     }
+}
 
+@media (width > 800px) {
+    nav {
+        display: block;
+    }
+
+    #menu_toggle_mobile {
+        display: none;
+    }
 }

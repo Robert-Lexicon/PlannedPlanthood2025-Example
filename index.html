@@ -11,7 +11,7 @@
   <body class="flow-xl">
     <header class="page__header content-grid full-width">
       <div class="flex justify-between">
-        <a href="#" class="logo py-sm">
+        <a href="#" class="logo">
           <svg
             width="214"
             height="210"
@@ -29,7 +29,7 @@
           </svg>
           <h1 class="break-word">Planned<span>Planthood</span></h1></a
         >
-        <nav aria-expanded="false">
+        <nav class="nav-main" aria-expanded="false">
           <ul role="list">
             <li><a href="#">Hem</a></li>
             <li><a href="#">Historik</a></li>
@@ -38,6 +38,7 @@
           </ul>
         </nav>
         <button
+          id="menu_toggle_mobile"
           type="button"
           class="button"
           data-variant="ghost"
@@ -193,7 +194,7 @@
           </div>
           <div class="hero__content">
             <h2>Anmäl dig till vårt nyhetsbrev så du inte missar en utsådd!</h2>
-            <form class="form__newsletter">
+            <form class="form-newsletter">
               <label class="visually-hidden" for="email"
                 >Fyll i din e-post</label
               >
@@ -545,7 +546,7 @@
       </section>
     </main>
     <footer class="page__footer content-grid py-xl" data-variant="inverted">
-      <div>
+      <div class="flex justify-between">
         <section class="flow">
           <a href="#" class="logo">
             <svg
