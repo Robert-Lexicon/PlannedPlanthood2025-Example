@@ -204,6 +204,11 @@ img {
     display: grid;
 }
 
+/* .grid-auto-cols {
+    --_min-col-width: 20ch;
+    grid-template-columns: repeat(auto-fit, minmax(var(--_min-col-width), 1fr));
+} */
+
 .justify-between {
     justify-content: space-between;
 }
@@ -383,23 +388,36 @@ input[type="submit"] {
 
 
 .card-list {
+    /* this could be made as utility classes but since I want to use subgrid it's easier this way */
     display: grid;
     gap: var(--spacing-md);
 
+    /* TODO: make a variable for min card width */
     grid-template-columns: repeat(auto-fit, minmax(20ch, 1fr));
+
+    /* for subgrid */
+    grid-auto-rows: minmax(10rem, 14rem) auto auto fit-content(12rem) auto;
 
 }
 
 /* Card */
 .card {
+    /* subgrid span */
+    grid-row: span 5;
+
     display: grid;
     gap: var(--spacing-md);
+
+    /* make subgrid rows and define areas */
+    grid-template-rows: subgrid;
+    grid-template-areas: "photo" "tags" "header" "body" "footer";
+
+    /* could be done like this too, but probably easier to read above */
+    /* grid-template-rows: subgrid [photo-start][photo-end tags-start][tags-end header-start][header-end body-start][body-end footer-start][footer-end]; */
 
     padding: var(--spacing-md);
     background-color: var(--clr-primary-light-1);
     box-shadow: var(--border-shadow);
-
-    grid-template-areas: "photo" "tags" "header" "body" "footer";
 
     >img {
         grid-area: photo;
