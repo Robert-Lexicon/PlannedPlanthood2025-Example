@@ -52,7 +52,8 @@ figcaption {
 
 /* for container queries, landmarks as containers */
 body> :is(header, footer),
-main {
+main,
+section {
     container-type: inline-size;
 }
 
