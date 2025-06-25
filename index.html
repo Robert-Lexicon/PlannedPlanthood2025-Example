@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Planned Planthood</title>
     <link rel="icon" type="image/svg+xml" href="/public/logo.svg" />
-    <link rel="stylesheet" href="styles/style.css" />
     <link rel="stylesheet" href="styles/reset.css" />
+    <link rel="stylesheet" href="styles/style.css" />
   </head>
   <body class="flow">
-    <header class="content-grid">
-      <div>
+    <header class="page__header content-grid py-sm full-width">
+      <div class="flex justify-between">
         <a href="#" class="logo">
           <svg
             width="214"
@@ -55,8 +55,8 @@
         </button>
       </div>
     </header>
-    <main class="content-grid flow">
-      <section class="flow">
+    <main class="content-grid flow flow-padding-y">
+      <section class="flow center-content">
         <h2>Uppskattade växter</h2>
         <p>
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique,
@@ -101,8 +101,8 @@
           />
         </div>
       </section>
-      <section class="full-width">
-        <div data-type="reverse">
+      <section class="hero full-width" data-type="reverse">
+        <div class="layout">
           <div class="dot">
             <svg
               aria-hidden="true"
@@ -186,7 +186,7 @@
               />
             </svg>
           </div>
-          <div class="content">
+          <div class="hero__content">
             <h2>Anmäl dig till vårt nyhetsbrev så du inte missar en utsådd!</h2>
             <form class="form__newsletter">
               <label class="visually-hidden" for="email"
@@ -245,13 +245,12 @@
               </p>
             </div>
             <footer>
-              <figure class="avatar-wrapper">
-                <img
-                  src="https://i.pravatar.cc/150?u=Coolio"
-                  alt=""
-                  role="presentation"
-                />
-              </figure>
+              <img
+                class="rounded"
+                src="https://i.pravatar.cc/150?u=Coolio"
+                alt=""
+                role="presentation"
+              />
               <div class="meta">
                 <address>
                   Publicerad av <a class="user" href="#">Coolio</a>
@@ -294,13 +293,12 @@
               </p>
             </div>
             <footer>
-              <div class="avatar-wrapper">
-                <img
-                  src="https://i.pravatar.cc/150?u=Anna-Odlare"
-                  alt=""
-                  role="presentation"
-                />
-              </div>
+              <img
+                class="rounded"
+                src="https://i.pravatar.cc/150?u=Anna-Odlare"
+                alt=""
+                role="presentation"
+              />
               <div class="meta">
                 <a class="user" href="#">Anna Odlare</a>
                 <time class="date" datetime="2024-12-05">2024-12-05</time>
@@ -342,13 +340,12 @@
               </p>
             </div>
             <footer>
-              <div class="avatar-wrapper">
-                <img
-                  src="https://i.pravatar.cc/150?u=Blomsterkalle"
-                  alt=""
-                  role="presentation"
-                />
-              </div>
+              <img
+                class="rounded"
+                src="https://i.pravatar.cc/150?u=Blomsterkalle"
+                alt=""
+                role="presentation"
+              />
               <div class="meta">
                 <a class="user" href="#">Blomsterkalle</a>
                 <time class="date" datetime="2024-12-03">2024-12-03</time>
@@ -389,13 +386,12 @@
               </p>
             </div>
             <footer>
-              <div class="avatar-wrapper">
-                <img
-                  src="https://i.pravatar.cc/150?u=Krydd-Malin"
-                  alt=""
-                  role="presentation"
-                />
-              </div>
+              <img
+                class="rounded"
+                src="https://i.pravatar.cc/150?u=Krydd-Malin"
+                alt=""
+                role="presentation"
+              />
               <div class="meta">
                 <a class="user" href="#">Krydd-Malin</a>
                 <time class="date" datetime="2024-12-07">2024-12-07</time>
@@ -434,9 +430,12 @@
               </p>
             </div>
             <footer>
-              <div class="avatar-wrapper">
-                <img src="https://i.pravatar.cc/150" alt="Grönis Avatar" />
-              </div>
+              <img
+                class="rounded"
+                src="https://i.pravatar.cc/150"
+                alt="Grönis Avatar"
+              />
+
               <div class="meta">
                 <a class="user" href="#">Grönis</a>
                 <time class="date" datetime="2024-12-06">2024-12-06</time>
@@ -477,13 +476,13 @@
               </p>
             </div>
             <footer>
-              <div class="avatar-wrapper">
-                <img
-                  src="https://i.pravatar.cc/150?u=Naturvännen"
-                  alt=""
-                  role="presentation"
-                />
-              </div>
+              <img
+                class="rounded"
+                src="https://i.pravatar.cc/150?u=Naturvännen"
+                alt=""
+                role="presentation"
+              />
+
               <div class="meta">
                 <a class="user" href="#">Naturvännen</a>
                 <time class="date" datetime="2024-12-08">2024-12-08</time>
@@ -493,7 +492,7 @@
         </ul>
       </section>
       <section class="hero full-width">
-        <div>
+        <div class="layout">
           <div class="dot">
             <svg
               aria-hidden="true"
@@ -525,7 +524,7 @@
               />
             </svg>
           </div>
-          <div class="content">
+          <div class="hero__content">
             <h2>Våra tidigare odlingar</h2>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -533,12 +532,14 @@
               ipsum! Iusto delectus ipsam esse pariatur rerum eveniet nostrum,
               dolor distinctio nam quaerat doloribus?
             </p>
-            <a href="#" class="button">Planterade plantor</a>
+            <a href="#" class="button hero__content-right"
+              >Planterade plantor</a
+            >
           </div>
         </div>
       </section>
     </main>
-    <footer class="content-grid" data-variant="inverted">
+    <footer class="page__footer content-grid py-xl" data-variant="inverted">
       <div>
         <section class="flow">
           <a href="#" class="logo">
@@ -565,7 +566,7 @@
             Consequuntur nesciunt ea corrupti aperiam fugit inventore ratione
             earum. Iure, eius molestias?
           </p>
-          <ul role="list" class="flow">
+          <ul role="list" class="contact flow">
             <li>
               <img class="contact__icon" src="/images/icon-phone.svg" alt="" />
               <a href="tel:020-1234567">Telefon: 020-1234567</a>
@@ -576,7 +577,7 @@
             </li>
           </ul>
         </section>
-        <nav class="flow">
+        <nav>
           <ul role="list" class="flow">
             <li><a href="">Hem</a></li>
             <li><a href="">Historik</a></li>

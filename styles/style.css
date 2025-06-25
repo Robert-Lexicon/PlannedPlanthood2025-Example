@@ -73,7 +73,7 @@
     --fw-bold: var(--fw-700);
     --fw-x-bold: var(--fw-900);
 
-    --spacing-xl: 4rem;
+    --spacing-xl: 3rem;
     --spacing-lg: 2rem;
     --spacing-md: 1rem;
     --spacing-sm: .5rem;
@@ -117,12 +117,22 @@ a {
     }
 }
 
+nav {
+    display: none;
+}
+
+p {
+    max-width: 50ch;
+}
+
 /* not recommended to do this usually, but in this case all images are restricted by their containers anyway */
 img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
+
+
 
 
 /**** || Composition ****/
@@ -155,10 +165,13 @@ img {
     grid-template-columns: inherit;
 }
 
-
 /* flow classes for spacing */
 .flow>*+* {
     margin-block-start: var(--flow-space, 1em);
+}
+
+.flow-padding-y>* {
+    padding-block: var(--flow-padding-y, var(--spacing-xl));
 }
 
 /* just center whatever content */
@@ -183,6 +196,15 @@ img {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+}
+
+.justify-between {
+    justify-content: space-between;
 }
 
 .grid {
@@ -215,8 +237,17 @@ img {
     text-transform: uppercase;
 }
 
+.py-sm {
+    padding-block: var(--spacing-sm);
+}
 
+.py-xl {
+    padding-block: var(--spacing-xl);
+}
 
+.rounded {
+    border-radius: 100vw;
+}
 
 
 /**** || Blocks ****/
@@ -278,6 +309,40 @@ img {
     }
 }
 
+
+
+/* Buttons */
+.button,
+input[type="submit"] {
+    display: inline-block;
+    border: none;
+    padding-block: var(--spacing-sm);
+    padding-inline: 1rem;
+    background-color: var(--clr-accent);
+    color: var(--clr-primary-light-1);
+    border-radius: 100vw;
+    cursor: pointer;
+
+    &:hover,
+    &:focus-visible {
+        outline: 1px solid var(--clr-accent);
+        background-color: var(--clr-primary-light-1);
+        color: var(--clr-accent);
+        text-decoration: none;
+    }
+
+    &[data-variant="faded"] {
+        color: var(--clr-primary-light-1);
+        background-color: var(--clr-primary-light-3);
+
+        &:hover,
+        &:focus-visible {
+            background-color: var(--clr-accent);
+            color: var(--clr-primary-light-1);
+        }
+    }
+}
+
 /* Card */
 .card {
     display: grid;
@@ -331,15 +396,86 @@ img {
     }
 }
 
+.contact {
+    .contact__icon {
+        display: inline;
+        height: 1.625ex;
+        width: auto;
+        padding-inline-end: var(--spacing-xs)
+    }
+}
+
+.dot {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--clr-accent);
+    border-radius: 100vw;
+    height: 100%;
+    aspect-ratio: 1;
+
+
+    svg,
+    img {
+        stroke: var(--clr-primary-light-1);
+        fill: var(--clr-primary-light-1);
+        height: 50%;
+        width: 50%;
+    }
+}
+
 .gallery {
     grid-template-columns: repeat(2, 1fr);
     border: 1rem solid var(--clr-primary-light-1);
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
+.hero {
+    background-color: var(--clr-primary-light-1);
+
+    text-align: center;
+
+    >.layout {
+        display: grid;
+        gap: var(--spacing-md);
+        justify-items: center;
+
+        grid-template-rows: min(30ch, 55ch) 1fr;
+    }
+
+    .hero__content {
+        display: grid;
+        justify-items: center;
+        gap: var(--spacing-md);
+    }
+
+    .hero__content-right {
+        justify-self: right;
+    }
+}
+
+.form__newsletter {
+    display: flex;
+    border-radius: 100vw;
+    border: 1px solid var(--clr-primary);
+    padding: 0.15rem;
+
+    input:not(.button) {
+        background-color: var(--clr-primary-light-1);
+        flex-grow: 1;
+        padding-block: var(--spacing-sm);
+        padding-inline: 1rem;
+        border-radius: inherit;
+        border: none;
+        text-align: center;
+    }
+}
+
 .logo {
     display: flex;
     gap: var(--spacing-sm);
+    align-items: center;
 
     &:hover,
     &:focus-visible {
@@ -353,14 +489,34 @@ img {
         font-size: var(--fs-500);
         font-weight: var(--fw-medium);
         text-transform: uppercase;
-        color: var(--clr-accent);
     }
 
     img,
     svg {
         stroke: var(--_clr-stroke, var(--clr-accent));
-        height: 2rem;
+        height: 2.5rem;
         stroke-width: 12;
         max-width: fit-content;
     }
+}
+
+.page__header {
+    background-color: var(--clr-primary-light-1);
+}
+
+.page__footer {}
+
+
+
+/**** || Exceptions ****/
+[data-variant="inverted"] {
+    background-color: var(--clr-accent);
+    color: var(--clr-accent-light-1);
+
+    a {
+        color: inherit;
+    }
+
+    --_clr-stroke: var(--clr-accent-light-1);
+
 }
