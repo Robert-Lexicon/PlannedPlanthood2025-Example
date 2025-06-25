@@ -121,9 +121,6 @@ nav {
     display: none;
 }
 
-p {
-    max-width: 50ch;
-}
 
 /* not recommended to do this usually, but in this case all images are restricted by their containers anyway */
 img {
@@ -131,7 +128,6 @@ img {
     height: 100%;
     object-fit: cover;
 }
-
 
 
 
@@ -216,6 +212,10 @@ img {
     gap: var(--spacing-md);
 }
 
+.container {
+    container-type: inline-size;
+}
+
 
 /**** || Utilities ****/
 
@@ -227,6 +227,10 @@ img {
     position: absolute;
     white-space: nowrap;
     width: 1px;
+}
+
+.aspect-square {
+    aspect-ratio: 1;
 }
 
 .border-dark {
@@ -377,6 +381,15 @@ input[type="submit"] {
     }
 }
 
+
+.card-list {
+    display: grid;
+    gap: var(--spacing-md);
+
+    grid-template-columns: repeat(auto-fit, minmax(20ch, 1fr));
+
+}
+
 /* Card */
 .card {
     display: grid;
@@ -414,7 +427,10 @@ input[type="submit"] {
         display: grid;
         grid-template-columns: 3rem 1fr;
         align-items: center;
+        align-content: end;
         gap: var(--spacing-sm);
+
+        font-size: var(--fs-200);
     }
 
     /* this could be nested in footer, but this way it's easier to override if needed */
@@ -476,12 +492,11 @@ input[type="submit"] {
 .hero {
     background-color: var(--clr-primary-light-1);
 
-    text-align: center;
-
     >.layout {
         display: grid;
         gap: var(--spacing-md);
         justify-items: center;
+        align-items: center;
 
         grid-template-rows: min(30ch, 55ch) 1fr;
     }
@@ -490,10 +505,48 @@ input[type="submit"] {
         display: grid;
         justify-items: center;
         gap: var(--spacing-md);
+
+
+        text-align: center;
+
+        h2 {
+            max-width: 20ch;
+        }
     }
 
     .hero__content-right {
         justify-self: right;
+    }
+
+    @container (width > 700px) {
+        >.layout {
+            justify-items: unset;
+            gap: var(--spacing-xl);
+            grid-template-rows: unset;
+
+            /* I don't like to set this specific sizes here since it could vary by content, so be set more dynamically. But for now... */
+            grid-template-columns: 25ch minmax(40ch, 55ch);
+
+            margin-inline: auto;
+        }
+
+        .hero__content {
+            justify-items: start;
+            text-align: unset;
+        }
+
+        &[data-type="reverse"] {
+            >.layout {
+                /* I don't like to set this specific sizes here since it could vary by content, so be set more dynamically. But for now... */
+                grid-template-columns: minmax(30ch, 40ch) 25ch;
+
+                .hero__content {
+                    order: -1;
+                }
+            }
+
+
+        }
     }
 }
 
@@ -570,6 +623,10 @@ input[type="submit"] {
 }
 
 .page__footer {
+    p {
+        max-width: 50ch;
+    }
+
     .contact {
         .contact__icon {
             display: inline;

@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Planned Planthood</title>
     <link rel="icon" type="image/svg+xml" href="/public/logo.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="styles/reset.css" />
     <link rel="stylesheet" href="styles/style.css" />
   </head>
@@ -215,9 +221,9 @@
           </div>
         </div>
       </section>
-      <section>
+      <section class="container">
         <h2 class="visually-hidden">Populära växter</h2>
-        <ul class="grid gap-md" role="list">
+        <ul class="card-list" role="list">
           <li class="card">
             <img
               src="https://picsum.photos/id/131/300/300"
@@ -252,8 +258,8 @@
             </div>
             <footer>
               <img
-                class="rounded border-dark"
-                src="https://i.pravatar.cc/150?u=Coolio"
+                class="rounded border-dark aspect-square"
+                src="https://i.pravatar.cc/150?u=coolio"
                 alt=""
                 role="presentation"
               />
@@ -300,8 +306,10 @@
             </div>
             <footer>
               <img
-                class="rounded border-dark"
-                src="https://i.pravatar.cc/150?u=Anna-Odlare"
+                class="rounded border-dark aspect-square"
+                src="https://i.pravatar.cc/150?u=Anna"
+                height="150"
+                width="150"
                 alt=""
                 role="presentation"
               />
@@ -347,8 +355,10 @@
             </div>
             <footer>
               <img
-                class="rounded border-dark"
-                src="https://i.pravatar.cc/150?u=Blomsterkalle"
+                class="rounded border-dark aspect-square"
+                src="https://i.pravatar.cc/150?u=Kalle"
+                height="150"
+                width="150"
                 alt=""
                 role="presentation"
               />
@@ -393,13 +403,15 @@
             </div>
             <footer>
               <img
-                class="rounded border-dark"
+                class="rounded border-dark aspect-square"
                 src="https://i.pravatar.cc/150?u=Krydd-Malin"
+                height="150"
+                width="150"
                 alt=""
                 role="presentation"
               />
               <div class="meta">
-                <a class="user" href="#">Krydd-Malin</a>
+                <a class="user" href="#">KryddMalin</a>
                 <time class="date" datetime="2024-12-07">2024-12-07</time>
               </div>
             </footer>
@@ -437,8 +449,10 @@
             </div>
             <footer>
               <img
-                class="rounded border-dark"
+                class="rounded border-dark aspect-square"
                 src="https://i.pravatar.cc/150"
+                height="150"
+                width="150"
                 alt="Grönis Avatar"
               />
 
@@ -483,8 +497,10 @@
             </div>
             <footer>
               <img
-                class="rounded border-dark"
+                class="rounded border-dark aspect-square"
                 src="https://i.pravatar.cc/150?u=Naturvännen"
+                height="150"
+                width="150"
                 alt=""
                 role="presentation"
               />
@@ -497,7 +513,7 @@
           </li>
         </ul>
       </section>
-      <section class="hero full-width py-xl">
+      <section class="hero full-width py-xl container">
         <div class="layout">
           <div class="dot">
             <svg
