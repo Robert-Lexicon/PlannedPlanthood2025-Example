@@ -73,8 +73,8 @@
     --fw-bold: var(--fw-700);
     --fw-x-bold: var(--fw-900);
 
-    --spacing-xl: 3rem;
-    --spacing-lg: 2rem;
+    --spacing-xl: 4rem;
+    --spacing-lg: 3rem;
     --spacing-md: 1rem;
     --spacing-sm: .5rem;
     --spacing-xs: .25rem;
@@ -167,12 +167,13 @@ img {
 
 /* flow classes for spacing */
 .flow>*+* {
-    margin-block-start: var(--flow-space, 1em);
+    margin-block-start: var(--flow-space, var(--spacing-md));
 }
 
-.flow-padding-y>* {
-    padding-block: var(--flow-padding-y, var(--spacing-xl));
+.flow-xl>*+* {
+    margin-block-start: var(--flow-space-xl, var(--spacing-xl));
 }
+
 
 /* just center whatever content */
 .center-content {
@@ -237,8 +238,16 @@ img {
     text-transform: uppercase;
 }
 
+.p-sm {
+    padding: var(--spacing-sm);
+}
+
 .py-sm {
     padding-block: var(--spacing-sm);
+}
+
+.py-lg {
+    padding-block: var(--spacing-lg);
 }
 
 .py-xl {
@@ -318,17 +327,24 @@ input[type="submit"] {
     border: none;
     padding-block: var(--spacing-sm);
     padding-inline: 1rem;
-    background-color: var(--clr-accent);
-    color: var(--clr-primary-light-1);
     border-radius: 100vw;
     cursor: pointer;
 
+    background-color: var(--clr-accent);
+    color: var(--clr-primary-light-1);
+
+    /* for svg icons */
+    fill: var(--clr-primary-light-1);
+
     &:hover,
     &:focus-visible {
+        text-decoration: none;
+
         outline: 1px solid var(--clr-accent);
+
         background-color: var(--clr-primary-light-1);
         color: var(--clr-accent);
-        text-decoration: none;
+        fill: var(--clr-accent);
     }
 
     &[data-variant="faded"] {
@@ -339,6 +355,21 @@ input[type="submit"] {
         &:focus-visible {
             background-color: var(--clr-accent);
             color: var(--clr-primary-light-1);
+        }
+    }
+
+    &[data-variant="ghost"] {
+        border-radius: 0;
+        color: var(--clr-accent);
+        fill: var(--clr-accent);
+        background-color: transparent;
+
+        &:hover,
+        &:focus-visible {
+            background-color: var(--clr-accent);
+            color: var(--clr-primary-light-1);
+            fill: var(--clr-primary-light-1);
+
         }
     }
 }
@@ -383,7 +414,7 @@ input[type="submit"] {
         gap: var(--spacing-sm);
     }
 
-    /* this could be nested in footer, but this way it is easier to override if needed */
+    /* this could be nested in footer, but this way it's easier to override if needed */
     .meta {
         .user {
             color: var(--clr-primary);
@@ -396,14 +427,8 @@ input[type="submit"] {
     }
 }
 
-.contact {
-    .contact__icon {
-        display: inline;
-        height: 1.625ex;
-        width: auto;
-        padding-inline-end: var(--spacing-xs)
-    }
-}
+
+
 
 .dot {
     display: flex;
@@ -504,7 +529,17 @@ input[type="submit"] {
     background-color: var(--clr-primary-light-1);
 }
 
-.page__footer {}
+.page__footer {
+
+    .contact {
+        .contact__icon {
+            display: inline;
+            height: 1.625ex;
+            width: auto;
+            padding-inline-end: var(--spacing-xs)
+        }
+    }
+}
 
 
 
@@ -513,10 +548,12 @@ input[type="submit"] {
     background-color: var(--clr-accent);
     color: var(--clr-accent-light-1);
 
+    --_clr-stroke: var(--clr-accent-light-1);
+
     a {
         color: inherit;
     }
 
-    --_clr-stroke: var(--clr-accent-light-1);
+
 
 }
