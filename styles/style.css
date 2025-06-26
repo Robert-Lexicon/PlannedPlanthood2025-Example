@@ -505,7 +505,7 @@ The utility classes with addition to bg-color could be used instead if we wanted
 
 /* Our hero of the hour */
 .hero {
-    --_aside-size: 40ch;
+    --_aside-size: 30ch;
 
     background-color: var(--clr-primary-light-1);
 
