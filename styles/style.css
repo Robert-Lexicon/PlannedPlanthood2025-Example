@@ -189,32 +189,13 @@ img {
     justify-content: var(--cluster-justify, flex-start);
 }
 
-.flex-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* these might just as well be utility classes but does do layout so I keep them here */
+/* these might just as well be utility classes but are used for layout so I keep them here for now */
 .flex {
     display: flex;
 }
 
-.grid {
-    display: grid;
-}
-
-/* .grid-auto-cols {
-    --_min-col-width: 20ch;
-    grid-template-columns: repeat(auto-fit, minmax(var(--_min-col-width), 1fr));
-} */
-
 .justify-between {
     justify-content: space-between;
-}
-
-.gap-md {
-    gap: var(--spacing-md);
 }
 
 .container {
@@ -224,30 +205,25 @@ img {
 
 /**** || Utilities ****/
 
-.visually-hidden {
-    clip: rect(0 0 0 0);
-    clip-path: inset(50%);
-    height: 1px;
-    overflow: hidden;
-    position: absolute;
-    white-space: nowrap;
-    width: 1px;
-}
+/* we could have done almost everything with utility classes, but for now we use blocks for most things */
 
 .aspect-square {
     aspect-ratio: 1;
 }
 
 .border-dark {
-    border: var(--_border-size, 1px) solid var(--clr-primary-dark);
+    /* by defining a local variable we can override it if needed */
+    --_border-size: 1px;
+    border: var(--_border-size) solid var(--clr-primary-dark);
 }
 
 .break-word span {
     display: table;
 }
 
-.uppercase {
-    text-transform: uppercase;
+.max-w-md {
+    --_max-width: 50ch;
+    max-width: var(--_max-width);
 }
 
 .p-sm {
@@ -270,8 +246,25 @@ img {
     border-radius: 100vw;
 }
 
+.uppercase {
+    text-transform: uppercase;
+}
+
+.visually-hidden {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+
 
 /**** || Blocks ****/
+/* I usually have the blocks (and most css) in alphabetical order since it's easier for me to find them. 
+If I have them in the order of appearance and the that changes everything will be a mess. */
+
 /* Badges */
 .badge {
     --_clr-badge: var(--clr-accent);
@@ -329,7 +322,6 @@ img {
         --_clr-badge: var(--clr-fast);
     }
 }
-
 
 
 /* Buttons */
@@ -464,11 +456,12 @@ input[type="submit"] {
     }
 }
 
+/* The green decorative dot. 
+The utility classes with addition to bg-color could be used instead if we wanted to */
 .dot {
     display: flex;
     justify-content: center;
     align-items: center;
-
     background-color: var(--clr-accent);
     border-radius: 100vw;
     aspect-ratio: 1;
@@ -482,16 +475,20 @@ input[type="submit"] {
     }
 }
 
+/* gallery with mobile first layout then query the parent container for other sizes */
 .gallery {
+    display: grid;
     grid-template-columns: repeat(2, 1fr);
     border: 1rem solid var(--clr-primary-light-1);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    box-shadow: var(--border-shadow);
 
-    @container (600px < width <=800px) {
+    /* tablet with just 3 columns and no spans */
+    @container (38rem < width <=50rem) {
         grid-template-columns: repeat(3, 1fr);
     }
 
-    @container (width > 800px) {
+    /* desktop version with spans and 6 columns */
+    @container (width > 50rem) {
         grid-template-columns: repeat(6, 1fr);
 
         :first-child {
@@ -499,22 +496,32 @@ input[type="submit"] {
             grid-row: span 2;
         }
 
+        /* select the last three elements */
         :nth-last-child(-n + 3) {
             grid-column: span 2;
         }
     }
 }
 
+/* Our hero of the hour */
 .hero {
-    --_aside-size: 20ch;
+    --_aside-size: 40ch;
 
     background-color: var(--clr-primary-light-1);
 
     >.layout {
         display: grid;
         gap: var(--spacing-md);
+        grid-template-rows: var(--_aside-size) auto;
         justify-items: center;
         align-items: center;
+    }
+
+    /* all this messing about with the dot and aside_size is really not needed, 
+        I just wanted to see if I can do it so it won't overflow with larger font sizes in the browser settings.  */
+    .dot {
+        height: 100%;
+        max-height: 100%;
     }
 
     .hero__content {
@@ -527,19 +534,32 @@ input[type="submit"] {
         h2 {
             max-width: 20ch;
         }
+
+        /* if a third element is there align it right, alternative to something like .hero__content-right */
+        :nth-child(3) {
+            justify-self: right;
+        }
     }
 
-    .hero__content-right {
-        justify-self: right;
-    }
-
+    /* For larger screens make the hero into two columns */
     @container (width > 42rem) {
+        --_aside-size: 20ch;
+
+        .dot {
+            max-width: 100%;
+            height: unset;
+        }
+
         >.layout {
             justify-items: unset;
             justify-content: center;
-            gap: clamp(1rem, 5vw, var(--spacing-xl));
-            grid-template-columns: var(--_aside-size) auto;
 
+            /* make two columns and remove the set rows */
+            grid-template-columns: var(--_aside-size) auto;
+            grid-template-rows: unset;
+
+            /* these are not needed either, but sometimes it's nice with more fluid spacing */
+            gap: clamp(1rem, 5vw, var(--spacing-xl));
             padding-inline: clamp(1rem, 3vw, var(--spacing-xl));
         }
 
@@ -562,6 +582,7 @@ input[type="submit"] {
     }
 }
 
+/* this could be inside hero, but could be we want to use it again somewhere else */
 .form-newsletter {
     display: flex;
     border-radius: 100vw;
@@ -634,10 +655,13 @@ input[type="submit"] {
 }
 
 .page__footer {
+
+    /* we could also set the whole block to a max-width if we wanted to, but having a cap for a paragraph is quite good anyway */
     p {
         max-width: 50ch;
     }
 
+    /* this could be moved out of here if we wanted to use it somewhere else, but for now I keep it here to find it easier */
     .contact {
         .contact__icon {
             display: inline;
@@ -662,7 +686,7 @@ input[type="submit"] {
     }
 }
 
-
+/* invert the variables for dark theme and tweak some like footer a bit */
 @media (prefers-color-scheme: dark) {
     :root {
         --clr-accent: var(--clr-green-100);
@@ -692,6 +716,7 @@ input[type="submit"] {
     }
 }
 
+/* hide/show mobile nav for small screens */
 @media (width > 50rem) {
     nav {
         display: block;
